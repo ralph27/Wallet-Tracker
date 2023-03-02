@@ -49,8 +49,8 @@ const Home: NextPage<{ wallet: string; connectWallet: () => void }> = ({
       </Head>
       <main>
         {wallet ? (
-          <div className="mx-5 mt-5 grid grid-cols-4">
-            <div className="pl-2">
+          <div className="mx-5 grid grid-cols-4">
+            <div className="pl-2 pt-5">
               {lists && lists?.length > 0 ? (
                 <ul className="menu rounded-box w-56 bg-base-100 p-2">
                   {lists.map((list) => (
@@ -90,7 +90,7 @@ const Home: NextPage<{ wallet: string; connectWallet: () => void }> = ({
                 }}
               />
             </div>
-            <div className="col-span-3 min-h-screen border-l-2 border-l-bc border-opacity-10 pr-5 pl-10">
+            <div className="col-span-3 min-h-screen border-l-2 border-l-bc border-opacity-10 pr-5 pl-10 pb-10 pt-5">
               {listSelected ? (
                 <div className="card mt-5 border border-gray-500 bg-base-100 shadow-xl ">
                   <div className="card-body">

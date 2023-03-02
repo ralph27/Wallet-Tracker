@@ -19,6 +19,7 @@
     "@trpc/react-query": "^10.9.0",
     "@trpc/server": "^10.9.0",
     "daisyui": "^2.51.2",
+    "dayjs": "^1.11.7",
     "ethers": "^6.0.8",
     "next": "^13.2.1",
     "react": "18.2.0",

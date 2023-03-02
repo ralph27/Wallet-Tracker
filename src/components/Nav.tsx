@@ -8,7 +8,7 @@ export default function Nav({
   connectWallet: () => void;
 }) {
   return (
-    <div className=" navbar justify-between bg-base-100 px-10 py-5">
+    <div className=" navbar justify-between border-b-2 border-b-bc border-opacity-10 bg-base-100 px-10 py-5">
       <a className="btn-ghost btn text-2xl normal-case text-lightGreen">
         WalletAnalyzor
       </a>
