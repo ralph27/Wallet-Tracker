@@ -1,11 +1,3 @@
-import { type MetaMaskInpageProvider } from "@metamask/providers";
-
-declare global {
-  interface Window {
-    ethereum?: MetaMaskInpageProvider;
-  }
-}
-
 export default function Nav({
   wallet,
   metamaskInstalled,

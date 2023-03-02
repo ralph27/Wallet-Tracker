@@ -5,6 +5,13 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Nav from "~/components/Nav";
 import { useState } from "react";
+import { type MetaMaskInpageProvider } from "@metamask/providers";
+
+declare global {
+  interface Window {
+    ethereum?: MetaMaskInpageProvider;
+  }
+}
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   const [wallet, setWallet] = useState<string>("");
@@ -17,11 +24,11 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   const connectWallet = async () => {
     if (window.ethereum) {
       setMetamaskInstalled(true);
-      const accounts: string[] = await window.ethereum.request({
+      const accounts: string[] = (await window.ethereum.request({
         method: "eth_requestAccounts",
-      });
+      })) as string[];
 
-      if (accounts[0]) {
+      if (accounts && accounts[0]) {
         setWallet(accounts[0]);
 
         if (
