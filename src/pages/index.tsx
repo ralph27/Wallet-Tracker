@@ -4,7 +4,7 @@ import { type KeyboardEvent, useState, type FormEvent } from "react";
 import WalletCard from "~/components/WalletCard";
 import { api } from "~/utils/api";
 
-const ethereumPattern = /^0x[a-fA-F0-9]{40}$/;
+// const ethereumPattern = /^0x[a-fA-F0-9]{40}$/;
 
 const Home: NextPage<{ wallet: string; connectWallet: () => void }> = ({
   wallet,

@@ -1,6 +1,4 @@
 import { type MetaMaskInpageProvider } from "@metamask/providers";
-import { useState } from "react";
-import { api } from "~/utils/api";
 
 declare global {
   interface Window {
