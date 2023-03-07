@@ -7,12 +7,20 @@ import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const transactionsRouter = createTRPCRouter({
   getERC20Tx: publicProcedure
-    .input(z.object({ address: z.string(), page: z.number() }))
+    .input(
+      z.object({
+        address: z.string(),
+        page: z.number(),
+        filter: z.string().nullable(),
+      })
+    )
     .query(async ({ input }) => {
       const res: TResponse = await handleRequest(
-        `https://api.etherscan.io/api?module=account&action=tokentx&address=${
-          input.address
-        }&page=${input.page}&offset=15&sort=desc&apikey=${
+        `https://api.etherscan.io/api?module=account&action=tokentx${
+          input.filter ? `&contractaddress=${input.filter}` : ""
+        }&address=${input.address}&page=${
+          input.page
+        }&offset=15&sort=desc&apikey=${
           process.env.NEXT_PUBLIC_ETHERSCAN_KEY || ""
         }`
       );

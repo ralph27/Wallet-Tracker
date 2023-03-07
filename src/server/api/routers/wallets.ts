@@ -32,4 +32,14 @@ export const walletsRouter = createTRPCRouter({
         },
       });
     }),
+
+  removeWallet: publicProcedure
+    .input(z.object({ walletId: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      return ctx.prisma.followedWallet.delete({
+        where: {
+          id: input.walletId,
+        },
+      });
+    }),
 });

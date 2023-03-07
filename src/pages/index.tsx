@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { type KeyboardEvent, useState, type FormEvent } from "react";
+import TopicCard from "~/components/TopicCard";
 import WalletCard from "~/components/WalletCard";
 import { api } from "~/utils/api";
 
@@ -52,23 +53,16 @@ const Home: NextPage<{ wallet: string; connectWallet: () => void }> = ({
           <div className="mx-5 grid grid-cols-4">
             <div className="pl-2 pt-5">
               {lists && lists?.length > 0 ? (
-                <ul className="menu rounded-box w-56 bg-base-100 p-2">
+                <ul className="menu rounded-box max-w-xs bg-base-100 p-2">
                   {lists.map((list) => (
-                    <li
+                    <TopicCard
+                      id={list.id}
+                      listSelected={listSelected}
+                      name={list.name}
+                      setListSelected={() => setListSelected(list.id)}
+                      onSave={() => void refetch()}
                       key={list.id}
-                      onClick={() => setListSelected(list.id)}
-                      className="hover:text-lightGreen"
-                    >
-                      <a
-                        className={`${
-                          list.id === listSelected
-                            ? "active bg-bc bg-opacity-10 text-lightGreen"
-                            : ""
-                        }`}
-                      >
-                        {list.name}
-                      </a>
-                    </li>
+                    />
                   ))}
                 </ul>
               ) : (

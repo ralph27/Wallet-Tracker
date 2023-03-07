@@ -19,4 +19,25 @@ export const listRouter = createTRPCRouter({
         },
       });
     }),
+  deleteList: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      return ctx.prisma.list.delete({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
+  editListName: publicProcedure
+    .input(z.object({ id: z.string(), newName: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      return ctx.prisma.list.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          name: input.newName,
+        },
+      });
+    }),
 });
